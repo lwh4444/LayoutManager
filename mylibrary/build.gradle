@@ -1,6 +1,8 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.github.dcendents.android-maven'
+
+apply plugin: 'com.novoda.bintray-release'
+
 
 android {
     compileSdkVersion 29
@@ -11,26 +13,33 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
-
+//
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
+
+
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.1.0'
 
-
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     //zxing 二维码工具
     implementation 'cn.yipianfengye.android:zxing-library:2.2'
 
-    implementation(name: 'libvlc-all-3.1.12', ext: 'aar')
+//    implementation(name: 'libvlc-all-3.1.12', ext: 'aar')
+    api 'com.rt:vlclibs:3.1.12'
 
     implementation 'com.google.code.gson:gson:2.8.5'
 
@@ -46,7 +55,34 @@ dependencies {
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+
 }
 repositories {
     mavenCentral()
+}
+
+publish {
+    repoName = "rt-library"//仓库名
+    userOrg = 'rtlei'      //bintray注册的用户名
+    groupId = 'com.rt'         //compile引用时的第1部分groupId
+    artifactId = 'layoutManager'     //compile引用时的第2部分项目名
+    publishVersion = '1.0.3'    //compile引用时的第3部分版本号
+    desc = '更换VLC版本号 '//d项目描述
+//    repoName="layout-manager" //你的仓库名称，没有填写默认仓库是maven//这也是很多人上传仓库不对名问题最多情况，
+//    website = '' //github 托管地址
+}
+//apply from: "bintrayUpload.gradle"
+
+apply plugin: 'maven'
+uploadArchives {
+    repositories.mavenDeployer {
+        // 本地仓库路径
+        repository(url: "file://E://leilbs/")
+        // 唯一标识
+        pom.groupId = "com.rt"
+        // 项目名称
+        pom.artifactId = "layoutManager"
+        // 版本号
+        pom.version = "1.0.0"
+    }
 }

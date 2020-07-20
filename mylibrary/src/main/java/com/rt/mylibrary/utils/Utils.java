@@ -22,9 +22,9 @@ import java.util.Hashtable;
 
 public class Utils {
 
-    public static Bitmap createQRCode(String url, int width, int height) {
-        int w = width;
-        int h = height;
+    public static Bitmap createQRCode(String url, float width, float height) {
+        int w = (int) width;
+        int h = (int) height;
         try {
             //判断URL合法性
             if (url == null || "".equals(url) || url.length() < 1) {
