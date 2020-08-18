@@ -67,11 +67,8 @@ publish {
     groupId = 'com.rt'         //compile引用时的第1部分groupId
     artifactId = 'layoutManager'     //compile引用时的第2部分项目名
     publishVersion = '1.0.3'    //compile引用时的第3部分版本号
-    desc = '更换VLC版本号 '//d项目描述
-//    repoName="layout-manager" //你的仓库名称，没有填写默认仓库是maven//这也是很多人上传仓库不对名问题最多情况，
-//    website = '' //github 托管地址
+    desc = '升级retrofit版本号 '//d项目描述
 }
-//apply from: "bintrayUpload.gradle"
 
 apply plugin: 'maven'
 uploadArchives {

@@ -16,9 +16,13 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class RetrofitServiceManager {
     private static final int DEFAULT_TIME_OUT = 5;//超时时间 5s
     private static final int DEFAULT_READ_TIME_OUT = 10;
-    private Retrofit mRetrofit;
+    private static Retrofit mRetrofit;
 
     private RetrofitServiceManager() {
+
+    }
+
+    public static void init(String baseUrl) {
         // 创建 OKHttpClient
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS);//连接超时时间
