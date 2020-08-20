@@ -38,7 +38,7 @@ public class RetrofitServiceManager {
                 .client(builder.build())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())
-                .baseUrl(ApiConfig.BASE_URL)
+                .baseUrl(baseUrl)
                 .build();
     }
 

@@ -66,8 +66,8 @@ publish {
     userOrg = 'rtlei'      //bintray注册的用户名
     groupId = 'com.rt'         //compile引用时的第1部分groupId
     artifactId = 'layoutManager'     //compile引用时的第2部分项目名
-    publishVersion = '1.0.3'    //compile引用时的第3部分版本号
-    desc = '升级retrofit版本号 '//d项目描述
+    publishVersion = '1.0.4'    //compile引用时的第3部分版本号
+    desc = 'retrofit地址动态可配'//d项目描述
 }
 
 apply plugin: 'maven'
